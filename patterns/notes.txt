@@ -1,0 +1,4 @@
+1.most patterns has nested loops.
+2.outer loop - rows, inner loop - columns - connect the columns.
+3.Print always in inner for loop.
+4.Observe symmetry (opitonal).
