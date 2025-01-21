@@ -3,7 +3,7 @@ const arr = [5, 1, 1, 4, 3, 2, 1];
 const k = 3;
 
 // Problem 1
-// Max sum or Min sum of contiguous sub Array. 
+// Max sum of contiguous sub Array. 
 function sumOfSubArray(arr, k) {
     let prevSum = 0;
     for (let i = 0; i < k; i++) {
@@ -26,6 +26,29 @@ function sumOfSubArray(arr, k) {
 
 sumOfSubArray(arr, k);
 
+// Min sum of contigous sub array.
+function minSumOfSubArray(arr, k) {
+    console.log(arr);
+    console.log(k);
+
+    let prevSum = 0;
+    for (let i = 0; i < k; i++) {
+        prevSum += arr[i];
+    }
+    let i = 0;
+    let minSum = prevSum;
+    while (k < arr.length) {
+        let currSum = prevSum + arr[k] - arr[i];
+        minSum = Math.min(prevSum, currSum);
+        prevSum = currSum;
+        i++;
+        k++;
+    }
+    console.log(`minSum ${minSum}`);
+    return minSum;
+}
+// minSumOfSubArray(arr, k);
+
 // Problem 2
 // Smallest subarray whose sum >= 8;
 
@@ -47,24 +70,47 @@ function smallSubArray(arr, z) {
     }
     return windowSize;
 }
-console.log(
-    smallSubArray(arr, z)
-);
+// console.log(
+//     smallSubArray(arr, z)
+// );
 
 // Problem 3
 // Check the second string is present in the first string.
-// const string1 = "My name is sriram";
-// const string2 = "sriram";
+const string1 = "My name is sriram";
+const string2 = "sriram";
 
 function checkIsStringPresent(string1, string2) {
-    let windowStart = 0;
-    for (let windowEnd = string2.length - 1; windowEnd < string1.length; windowEnd++) {
-        while (windowStart <= windowEnd) {
-
-        }
+    if (string2.length > string1.length) {
+        return false;
     }
+    // let windowStart = 0;
+    let left = 0;
+    let right = 0;
+    let match = 0;
+    while (right < string1.length) {
+        if (string1[right] === string2[match]) {
+            match++;
+        }
+        if (match === string2.length) {
+            console.log(true);
+
+            return true;
+        }
+        if (right - left + 1 > string2.length) {
+            if (string1[left] === string2[match - 1]) {
+                match--;
+            }
+            left++;
+        }
+        right++;
+    }
+    return false;
+
 }
-// checkIsStringPresent(string1, string2)
+console.log(
+
+    checkIsStringPresent(string1, string2)
+);
 
 // problem 4 
 // longest substring with k distinct characters
