@@ -1,5 +1,16 @@
 // Brute force solution
 arr = [1, 2, 3, 4, 5];
+
+function rightRotatebyOne(arr) {
+    let element = arr[arr.length - 1];
+    for (let i = arr.length - 1; i > 0; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[0] = element;
+    console.log(arr);
+}
+
+rightRotatebyOne(arr);
 function bruteRotate(arr, n, place) {
     if (place > n) {
         place = place % n;
@@ -34,5 +45,5 @@ function reverse(arr, start, end) {
         end--;
     }
 }
-let result = optimalRightRotate(arr, arr.length, 2);
-console.log(result);
+// let result = optimalRightRotate(arr, arr.length, 2);
+// console.log(result);

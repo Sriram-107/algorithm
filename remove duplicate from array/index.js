@@ -8,17 +8,17 @@ function bruteForce(arr) {
     for (let i = 0; i < arr.length; i++) {
         set.add(arr[i]);
     }
-    console.log(set);
+    // console.log(set);
     // index to access array.
     let index = 0;
     // loop through set and replace elements in array
     for (let element of set) {
-        console.log(element);
+        // console.log(element);
         arr[index] = element;
         index++
     }
+    arr.splice(index, arr.length - index);
     console.log(arr);
-
 }
 // bruteForce(arr);
 
@@ -38,10 +38,9 @@ function twoPointer(arr) {
         }
     }
     // duplicates removed
+    arr.splice(left + 1, arr.length - left + 1);
     console.log(arr);
     // 3 elements changed
-    console.log(left + 1);
-
-
+    // console.log(left + 1);
 }
 twoPointer(arr);
